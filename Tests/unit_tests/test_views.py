@@ -38,3 +38,12 @@ class ViewTest(TestCase):
         response = self.client.post('/', {'height':1.7,'weight':"60"})
         self.assertContains(response, '20.76', 1, 200, html=True)
     
+    def test_unit_heavy(self):
+        """Tests the home page."""
+        response = self.client.post('/', {'height':1.7,'weight':"74"})
+        self.assertContains(response, '25.61', 1, 200, html=True)
+        
+    def test_unit_lite(self):
+        """Tests the home page."""
+        response = self.client.post('/', {'height':1.7,'weight':"40"})
+        self.assertContains(response, '13.84', 1, 200, html=True)
